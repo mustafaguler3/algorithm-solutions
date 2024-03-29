@@ -5,10 +5,121 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        int number = 1267; // Örnek ikili sayı
-        int longestGap = findLongestBinaryGap(number);
-        System.out.println("En uzun ikili boşluk: " + longestGap);
+
+        int[] arr = {1,2,3,4};
+        reverseArray(arr);
+
+        System.out.print("Reversed ");
+
+        for (int n : arr){
+            System.out.print(n +" ");
+        }
     }
+
+    //
+
+    // reverse arraylist without using Collections.reverse()
+    static void reverseArrayList(ArrayList<Integer> arrayList){
+        int start = 0;
+        int end = arrayList.size()-1;
+
+        while (start < end){
+            // Başlangıç ve bitiş indekslerini kullanarak elemanları yer değiştir
+            int temp = arrayList.get(start);
+            arrayList.set(start,arrayList.get(end));
+            arrayList.set(end,temp);
+
+            // update index
+            start++;
+            end--;
+        }
+    }
+
+    // reverse arraylist siple
+    static void reverseArraylistSimple(){
+        // Örnek bir ArrayList oluşturalım
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        arrayList.add(1);
+        arrayList.add(2);
+        arrayList.add(3);
+        arrayList.add(4);
+        arrayList.add(5);
+
+        // ArrayList'i tersine çevirelim
+        Collections.reverse(arrayList);
+
+        // Tersine çevrilmiş ArrayList'i yazdıralım
+        System.out.println("Tersine çevrilmiş ArrayList: " + arrayList);
+    }
+
+    //reverse an array
+    static void reverseArray(int[] arr){
+        int start = 0;
+        int end = arr.length-1;
+
+        while (start < end){
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] =temp;
+
+            start++;
+            end--;
+        }
+    }
+
+    // Reverse int value and int or char array
+    static int reverseInteger(int num){
+        int rev = 0;
+        while (num != 0){
+            int digit = num % 10;
+            rev = rev*10 + digit;
+            num /= 10;
+        }
+        return rev;
+    }
+
+    //  Swap even and odd, make left fill with evven, make right fill with odd
+    static void swapEven(int[] arr)
+    {
+
+        for(int i=0; i < arr.length; i++)
+        {
+            for(int j=0; j<arr.length; j++)
+            {
+                if(arr[i] % 2 == 0)
+                {
+
+                    swapOnly(arr, i, j);
+
+                }
+            }
+
+        }
+
+    }
+    static void swapOnly(int[] arr){
+        int temp = arr[0];
+        arr[0] = arr[1];
+        arr[1] = temp;
+    }
+    static void swapOnly(int []arr, int first, int next){
+        int temp = arr[first];
+        arr[first] = arr[next];
+        arr[next] = temp;
+    }
+    // Swap values in arrays lowest to highest via temp variable
+    static void swapValue(int[] arr){
+        for (int i = 0;i < arr.length; i++){
+            for (int j = 0;j <arr.length;j++){
+                if (arr[j] > arr[i]){
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+    }
+
     // Remove repeated characters of a string
     static String removeDuplicates(String text){
         String temp = "";
