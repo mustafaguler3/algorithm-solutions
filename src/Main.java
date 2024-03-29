@@ -5,12 +5,98 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        int[] arr = {2,6,8,2};
-        int mid = findMidNumber(arr);
+        int number = 1267; // Örnek ikili sayı
+        int longestGap = findLongestBinaryGap(number);
+        System.out.println("En uzun ikili boşluk: " + longestGap);
+    }
+    // Longest Binary Gap between 1s and 0s
+    // örn 10000010001 -> 5
+    public static int findLongestBinaryGap(int number) {
+        String binaryString = Integer.toBinaryString(number);
 
-        System.out.println("Orta : "+mid);
+        int longestGap = 0;
+        int currentGap = 0;
+        boolean gapStarted = false;
+
+        for (int i = 0; i < binaryString.length(); i++) {
+            char bit = binaryString.charAt(i);
+
+            if (bit == '1') {
+                if (!gapStarted) {
+                    gapStarted = true;
+                } else {
+                    longestGap = Math.max(longestGap, currentGap);
+                }
+                currentGap = 0;
+            } else {
+                if (gapStarted) {
+                    currentGap++;
+                }
+            }
+        }
+
+        return longestGap;
     }
 
+    // Find Missing Number
+    public static int findMissingNumber(int[] array) {
+        int n = array.length + 1; // Eksik sayı dahil toplam eleman sayısı
+        int totalSum = n * (n + 1) / 2; // Tüm elemanların toplamı
+        int arraySum = 0; // Dizideki elemanların toplamı
+
+        // Dizideki elemanların toplamını hesapla
+        for (int num : array) {
+            arraySum += num;
+        }
+
+        // Toplamdan dizideki elemanların toplamını çıkararak eksik sayıyı bul
+        int missingNumber = totalSum - arraySum;
+        return missingNumber;
+    }
+
+    // find duplicates
+
+    // HashMap Algoritması:
+    //
+    //Bu algoritma, array'deki her değeri bir HashMap'e ekler. Bir değer tekrar ediyorsa, HashMap'deki değerin sayısı birer birer artırılır.
+
+    public static int[] findDuplicatesTwo(int[] arr) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        List<Integer> duplicates = new ArrayList<>();
+
+        for (int num : arr) {
+            if (map.containsKey(num)) {
+                map.put(num, map.get(num) + 1);
+            } else {
+                map.put(num, 1);
+            }
+        }
+
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if (entry.getValue() > 1) {
+                duplicates.add(entry.getKey());
+            }
+        }
+
+        return duplicates.stream().mapToInt(Integer::intValue).toArray();
+    }
+    /*
+    Brute-Force Algoritması:
+
+    Bu algoritma, array'deki her bir değeri diğer tüm değerlerle karşılaştırır. Bir değer tekrar ediyorsa, tekrar sayısı birer birer artırılır
+     */
+    static int[] findDuplicates(int[] arr){
+        int[] duplicates = new int[arr.length];
+
+        for (int i = 0;i<arr.length;i++){
+            for (int j = i + 1; j<arr.length;j++){
+                if (arr[i] == arr[j]){
+                    duplicates[i]++;
+                }
+            }
+        }
+        return duplicates;
+    }
     // find mid number in array
     static int findMidNumber(int[] arr){
         int length = arr.length;
