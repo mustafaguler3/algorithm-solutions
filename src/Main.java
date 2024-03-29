@@ -9,6 +9,19 @@ public class Main {
         int longestGap = findLongestBinaryGap(number);
         System.out.println("En uzun ikili boşluk: " + longestGap);
     }
+    // Remove repeated characters of a string
+    static String removeDuplicates(String text){
+        String temp = "";
+
+        for (int i=0;i<text.length();i++){
+            if (!temp.contains(text.charAt(i)+ "")){
+                temp += text.charAt(i)+"";
+            }
+        }
+        return temp;
+    }
+
+
     // Longest Binary Gap between 1s and 0s
     // örn 10000010001 -> 5
     public static int findLongestBinaryGap(int number) {
