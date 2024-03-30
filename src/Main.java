@@ -6,17 +6,107 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        int[] arr = {1,2,3,4};
-        reverseArray(arr);
+        String str = "Test"; // return tEST
+        String word = "I like CODing";
 
-        System.out.print("Reversed ");
+        String result = swapCase(word);
 
-        for (int n : arr){
-            System.out.print(n +" ");
+        System.out.println(result);
+    }
+
+    // rotate array to the right
+    public static void rotateRight(int[] arr, int k) {
+        int length = arr.length;
+        if (length == 0) {
+            return;
+        }
+        k = k % length; // Döndürme miktarını dizinin uzunluğuna mod alarak sınırlayalım
+        reverse(arr, 0, length - 1); // Tüm diziyi tersine çevir
+        reverse(arr, 0, k - 1); // İlk k elemanı tersine çevir
+        reverse(arr, k, length - 1); // Geri kalan elemanları tersine çevir
+    }
+
+    public static void reverse(int[] arr, int start, int end) {
+        while (start < end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
         }
     }
 
-    //
+    // well formed brackets
+    static boolean isWellFormed(String s){
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()){
+            if (c == '(' || c == '[' || c == '{'){
+                stack.push(c);
+            }else {
+                if (stack.isEmpty()){
+                    return false;// Closing bracket encountered without corresponding opening bracket
+                }
+                char top = stack.pop();
+                if ((c == ')' && top != '(') ||
+                        (c == ']' && top != '[') ||
+                        (c == '}' && top != '{')) {
+                    return false; // Mismatched opening and closing brackets
+                }
+            }
+        }
+        return stack.isEmpty(); // All opening brackets have been matched
+    }
+
+    // Swap cases of characters
+    // M -> m , mustafa -> MUSTAFA
+    static String swapCase(String str){
+        StringBuilder swappedStr = new StringBuilder();
+        for (int i = 0;i<str.length();i++){
+            char c = str.charAt(i);
+
+            if (Character.isUpperCase(c)){
+                swappedStr.append(Character.toLowerCase(c));
+            }else if(Character.isLowerCase(c)){
+                swappedStr.append(Character.toUpperCase(c));
+            }else {
+                swappedStr.append(c);
+            }
+        }
+        return swappedStr.toString();
+    }
+
+    // Generate Random Number - PrintRange method
+    static int printRange(int start,int end){
+        int distance = end - start + 1;
+
+        return (int) ((Math.random() * distance) + start);
+    }
+    static void generateRandomNumber(){
+        Random random = new Random();
+
+        System.out.println(random.nextInt(10));
+
+        int[] array = new int[10];
+        for (int i = 0; i < 10; i++) {
+            array[i] = random.nextInt(10);
+        }
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+
+        int start = 1;int end = 10;
+
+        System.out.println(printRange(start, end));
+
+        int[] array2 = new int[10];
+        for (int i = 0; i < array2.length; i++) {
+            array2[i] = printRange(start, end);
+        }
+        System.out.println(Arrays.toString(array2));
+        for (int i = 0; i < array2.length; i++) {
+            System.out.print(array2[i] + " ");
+        }
+    }
 
     // reverse arraylist without using Collections.reverse()
     static void reverseArrayList(ArrayList<Integer> arrayList){
