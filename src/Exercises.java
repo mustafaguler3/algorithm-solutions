@@ -3,9 +3,48 @@ public class Exercises {
 
         int[] arr = {1,3,6,2,8};
 
-        maxOfDigit(395456);
+        isPalindrome(121);
     }
+    static void isPalindrome(int num){
+        int rev = 0;
+        int temp = num;
 
+        while (num != 0){
+            rev = rev*10 + num%10;
+            num /= 10;
+        }
+
+        if (rev == temp){
+            System.out.println("is palindrome");
+        }else {
+            System.out.println("not palindrome");
+        }
+    }
+    static void reverseNumber(int num){
+        int rev = 0;
+
+        while (num != 0){
+            rev = rev*10 + num%10;
+            num /= 10;
+        }
+        System.out.println(num +" Reversed is "+rev);
+    }
+    static void isArmstrong(int num){
+        int sum = 0;
+        int length = String.valueOf(num).length();
+        int temp = num;
+
+        while (temp != 0){
+            int remainder = temp%10;
+            sum += Math.pow(remainder,length);
+            temp /= 10;
+        }
+        if (sum == num){
+            System.out.println("is armstrong");
+        }else {
+            System.out.println("is not armstrong");
+        }
+    }
     static void maxOfDigit(int num){
         int max = num % 10;
         while (num > 0){
