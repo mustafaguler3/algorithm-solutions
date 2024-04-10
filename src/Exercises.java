@@ -3,7 +3,75 @@ public class Exercises {
 
         int[] arr = {1,3,6,2,8};
 
-        isPalindrome(121);
+        fullTriagle();
+    }
+    /*
+
+     *********
+      *******
+       *****
+        ***
+         *
+
+     */
+    //static void reverseFullTriagle(){
+      //  for (int i = )
+    //}
+    /*
+       *
+      ***
+     *****
+    *******
+   *********
+     */
+    static void fullTriagle(){
+        for (int i = 0;i<=5;i++){
+
+            for (int s = 0;s<5-i;s++){
+                System.out.print(" ");
+            }
+
+            for (int j = 1;j<=2*i-1;j++){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+    /*
+    1
+    12
+    123
+    1234
+    12345
+     */
+    static void leftPattern(){
+        for (int i = 0;i<=5;i++){
+
+            for (int j = 1;j<=i;j++){
+                System.out.print(j);
+            }
+            System.out.println();
+        }
+    }
+    /*
+        1
+       22
+      333
+     4444
+    55555
+     */
+    static void rigthPattern(){
+        for (int i = 1;i<=5;i++){
+
+            for (int s = 0;s<5-i;s++){
+                System.out.print(" ");
+            }
+
+            for (int j = 0;j<i;j++){
+                System.out.print(i);
+            }
+            System.out.println();
+        }
     }
     static void isPalindrome(int num){
         int rev = 0;

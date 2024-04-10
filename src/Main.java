@@ -6,12 +6,10 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        String str = "Test"; // return tEST
-        String word = "I like CODing";
+        //diamondPattern();
+        reverseFullTriaglePattern();
 
-        String result = swapCase(word);
 
-        System.out.println(result);
     }
 
     // rotate array to the right
