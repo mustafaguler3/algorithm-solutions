@@ -1,10 +1,33 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class Exercises {
     public static void main(String[] args) {
 
         int[] arr = {1,3,6,2,8};
 
-        reverseFullTriagle();
+        findDuplicateCharacter("mustafa");
     }
+
+    static void findDuplicateCharacter(String str){
+        HashMap<Character,Integer> duplicates = new HashMap<>();
+
+        for (char ch : str.toCharArray()){
+            if (duplicates.containsKey(ch)){
+                duplicates.put(ch,duplicates.get(ch)+1);
+            }else {
+                duplicates.put(ch,1);
+            }
+        }
+
+        for (Map.Entry<Character,Integer> entry : duplicates.entrySet()){
+            if (entry.getValue() > 1){
+                System.out.println("Karakter "+entry.getKey()+ " " + entry.getValue() + " kez tekrar ediyor");
+            }
+        }
+
+    }
+
     /*
 
      *********
