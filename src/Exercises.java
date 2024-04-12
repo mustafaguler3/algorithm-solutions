@@ -3,7 +3,7 @@ public class Exercises {
 
         int[] arr = {1,3,6,2,8};
 
-        fullTriagle();
+        reverseFullTriagle();
     }
     /*
 
@@ -14,9 +14,20 @@ public class Exercises {
          *
 
      */
-    //static void reverseFullTriagle(){
-      //  for (int i = )
-    //}
+    static void reverseFullTriagle(){
+        for (int i = 5;i>=1;i--){
+
+            for (int s = 1;s<=5-i;s++){
+                System.out.print(" ");
+            }
+
+            for (int j = 1;j<=2*i-1;j++){
+                System.out.print("*");
+            }
+
+            System.out.println();
+        }
+    }
     /*
        *
       ***
