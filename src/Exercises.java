@@ -1,14 +1,35 @@
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class Exercises {
     public static void main(String[] args) {
 
         int[] arr = {1,3,6,2,8};
 
-        findDuplicateCharacter("mustafa");
     }
 
+    static void findCommonCharAmongTwoString(String str1,String str2){
+        Set<Character> set1 = new HashSet<>();
+        Set<Character> set2 = new HashSet<>();
+
+        for (char c : str1.toCharArray()){
+            set1.add(c);
+        }
+
+        for (char c: str2.toCharArray()){
+            set2.add(c);
+        }
+
+        set1.retainAll(set2);
+
+        System.out.println("Common Character");
+
+        for (char c : set1){
+            System.out.println(c);
+        }
+    }
     static void findDuplicateCharacter(String str){
         HashMap<Character,Integer> duplicates = new HashMap<>();
 

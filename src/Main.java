@@ -616,6 +616,7 @@ public class Main {
         for (char c : str1.toCharArray()){
             set1.add(c);
         }
+        // İkinci stringteki karakterleri set2'ye ekle
         for (char c : str2.toCharArray()){
             set2.add(c);
         }
