@@ -6,12 +6,24 @@ import java.util.Set;
 public class Exercises {
     public static void main(String[] args) {
 
-        int[] arr = {3,6,2,1,3,8};
+        int[] arr = {3,5,2,1,};
 
-
-        System.out.println(findMiddle(arr));
+        System.out.println(findMissingNumber(arr));
     }
 
+    static int findMissingNumber(int[] arr){
+        int n = arr.length + 1;
+        int total = n * (n + 1) / 2;
+        int arraySum = 0;
+
+        for (int num : arr){
+            arraySum += num;
+        }
+
+        int missing = total - arraySum;
+
+        return missing;
+    }
 
     static int findMiddle(int[] arr){
         int length = arr.length;
