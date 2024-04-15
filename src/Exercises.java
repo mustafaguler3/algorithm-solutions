@@ -6,12 +6,23 @@ import java.util.Set;
 public class Exercises {
     public static void main(String[] args) {
 
-        int[] arr = {3,6,2,1,3};
+        int[] arr = {3,6,2,1,3,8};
 
 
-        isSorted(arr,5);
+        System.out.println(findMiddle(arr));
     }
 
+
+    static int findMiddle(int[] arr){
+        int length = arr.length;
+        int middle = length / 2;
+
+        if (length % 2 != 0){
+            return arr[middle];
+        }else {
+            return (arr[middle - 1] + arr[middle]) / 2;
+        }
+    }
 
     static boolean isSorted(int[] arr,int n){
         if (n == 0 || n == 1){
