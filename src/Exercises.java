@@ -8,7 +8,18 @@ public class Exercises {
 
         int[] arr = {3,5,2,1,};
 
-        System.out.println(findMissingNumber(arr));
+        System.out.println(removeDuplicate("mustafa"));
+    }
+
+    static String removeDuplicate(String text){
+        String temp = " ";
+
+        for (int i = 0;i<text.length();i++){
+            if (!temp.contains(text.charAt(i)+"")){
+                temp += text.charAt(i)+"";
+            }
+        }
+        return temp;
     }
 
     static int findMissingNumber(int[] arr){
