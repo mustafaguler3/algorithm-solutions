@@ -9,9 +9,21 @@ public class Exercises {
         int[] arr = {3,6,2,1,3};
 
 
-        findDuplicatesInArray(arr);
+        isSorted(arr,5);
     }
 
+
+    static boolean isSorted(int[] arr,int n){
+        if (n == 0 || n == 1){
+            return true;
+        }
+
+        if (arr[n - 1] < arr[n -2]){
+            return false;
+        }
+
+        return isSorted(arr,n-1);
+    }
 
     static void findDuplicatesInArray(int[] arr){
         HashMap<Integer,Integer> duplicates = new HashMap<>();
