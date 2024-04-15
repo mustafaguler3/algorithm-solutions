@@ -6,10 +6,45 @@ import java.util.Set;
 public class Exercises {
     public static void main(String[] args) {
 
-        int[] arr = {1,3,6,2,8};
+        int[] arr = {3,6,2,1,3};
 
+
+        findDuplicatesInArray(arr);
     }
 
+
+    static void findDuplicatesInArray(int[] arr){
+        HashMap<Integer,Integer> duplicates = new HashMap<>();
+
+        for (Integer i : arr){
+            if (duplicates.containsKey(i)){
+                duplicates.put(i,duplicates.get(i)+1);
+            }else {
+                duplicates.put(i,1);
+            }
+        }
+
+        for (Map.Entry<Integer,Integer> entry : duplicates.entrySet()){
+            if (entry.getValue() > 1){
+                System.out.println("the number "+entry.getKey() + " repeats " +entry.getValue()+ " times");
+            }
+        }
+    }
+
+    static int greatestDifference(int[] arr){
+        int gFifference = 0;
+
+        for (int i =0;i<arr.length-1;i++){
+            if (arr[i + 1] > arr[i]){
+                int difference = arr[i+1] - arr[i];
+
+                if (difference > gFifference){
+                    gFifference = difference;
+                }
+            }
+        }
+        return gFifference;
+    }
     static void findCommonCharAmongTwoString(String str1,String str2){
         Set<Character> set1 = new HashSet<>();
         Set<Character> set2 = new HashSet<>();
