@@ -8,7 +8,20 @@ public class Exercises {
 
         int[] arr = {3,5,2,1,};
 
-        System.out.println(removeDuplicate("mustafa"));
+        reverseValue(546);
+    }
+
+    static void reverseArray(int[] arr){
+
+    }
+
+    static void reverseValue(int num){
+        int rev = 0;
+        while (num != 0){
+            rev = rev*10 + num % 10;
+            num /= 10;
+        }
+        System.out.println("Reversed : "+rev);
     }
 
     static String removeDuplicate(String text){

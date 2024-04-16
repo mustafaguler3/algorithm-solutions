@@ -168,21 +168,16 @@ public class Main {
     //  Swap even and odd, make left fill with evven, make right fill with odd
     static void swapEven(int[] arr)
     {
-
         for(int i=0; i < arr.length; i++)
         {
             for(int j=0; j<arr.length; j++)
             {
                 if(arr[i] % 2 == 0)
                 {
-
                     swapOnly(arr, i, j);
-
                 }
             }
-
         }
-
     }
     static void swapOnly(int[] arr){
         int temp = arr[0];
