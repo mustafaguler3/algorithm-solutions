@@ -1,18 +1,28 @@
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Exercises {
     public static void main(String[] args) {
 
-        int[] arr = {3,5,2,1,};
+        int[] arr = {3,5,2,1};
 
-        reverseValue(546);
+        System.out.println(Arrays.toString(arr));
+
+
     }
 
     static void reverseArray(int[] arr){
+        int start = 0;
+        int end = arr.length-1;
 
+        while (start < end){
+            int temp = start;
+            start = end;
+            end = temp;
+
+            start++;
+            end--;
+        }
+        System.out.println(arr);
     }
 
     static void reverseValue(int num){
