@@ -6,8 +6,24 @@ public class Exercises {
         Random random = new Random();
         int[] arr = {3,5,2,1};
 
-        randomNumber(random);
+        System.out.println(swapStringChar("muStAfa"));
     }
+    static String swapStringChar(String str){
+        StringBuilder swapped = new StringBuilder();
+        for (int i = 0;i<str.length();i++){
+            char c = str.charAt(i);
+
+            if (Character.isUpperCase(c)){
+                swapped.append(Character.toLowerCase(c));
+            }else if (Character.isLowerCase(c)){
+                swapped.append(Character.toUpperCase(c));
+            }else {
+                swapped.append(c);
+            }
+        }
+        return swapped.toString();
+    }
+
     static void randomNumber(Random random){
         int[] arr = new int[6];
 
