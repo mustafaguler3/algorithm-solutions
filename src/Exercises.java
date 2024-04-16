@@ -9,6 +9,19 @@ public class Exercises {
 
 
     }
+    static void reverseArraylist(ArrayList<Integer> arrayList){
+        int start = 0;
+        int end = arrayList.size()-1;
+
+        while (start < end){
+            int temp = arrayList.get(start);
+            arrayList.set(start,arrayList.get(end));
+            arrayList.set(end,temp);
+
+            start++;
+            end--;
+        }
+    }
 
     static void reverseArray(int[] arr){
         int start = 0;
