@@ -3,11 +3,20 @@ import java.util.*;
 public class Exercises {
     public static void main(String[] args) {
 
+        Random random = new Random();
         int[] arr = {3,5,2,1};
 
-        System.out.println(Arrays.toString(arr));
+        randomNumber(random);
+    }
+    static void randomNumber(Random random){
+        int[] arr = new int[6];
 
-
+        for (int i = 0;i<arr.length;i++){
+            arr[i] = random.nextInt(10);
+        }
+        for (int i = 0;i<arr.length;i++){
+            System.out.print(arr[i]+" ");
+        }
     }
     static void reverseArraylist(ArrayList<Integer> arrayList){
         int start = 0;
