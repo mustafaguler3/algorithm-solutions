@@ -6,10 +6,9 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-
-
-
     }
+
+
 
     // rotate array to the right
     public static void rotateRight(int[] arr, int k) {

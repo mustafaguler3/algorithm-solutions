@@ -6,8 +6,22 @@ public class Exercises {
         Random random = new Random();
         int[] arr = {3,5,2,1};
 
-        System.out.println(swapStringChar("muStAfa"));
+        String[] array = {"mustafa","güler","hasan","aaaaaaaaaa"};
+
+        System.out.println(longestString(array));
     }
+    static String longestString(String[] arr){
+        int max = 0;
+        String longest = null;
+        for (String s: arr){
+            if (s.length() > max){
+                max = s.length();
+                longest = s;
+            }
+        }
+        return longest;
+    }
+
     static String swapStringChar(String str){
         StringBuilder swapped = new StringBuilder();
         for (int i = 0;i<str.length();i++){
