@@ -3,13 +3,53 @@ import java.util.*;
 public class Exercises {
     public static void main(String[] args) {
 
-        Random random = new Random();
-        int[] arr = {3,5,2,1};
-
-        String[] array = {"mustafa","güler","hasan","aaaaaaaaaa"};
-
-        System.out.println(longestString(array));
+        fibonacci(12);
     }
+
+    static int fibonacci(int num){
+        if (num <= 1){
+            return num;
+        }
+        int f = 1,prev = 1;
+        for (int i = 2;i<num;i++){
+            int temp = f;
+            f += prev;
+            prev = temp;
+        }
+        return f;
+    }
+    static char maxOccuringChar(String message){
+        int[] ctr = new int[256];
+        int max = 0;
+        char result = ' ';
+
+        for(int i=0;i<message.length();i++){
+            ctr[message.charAt(i)]++;
+            for(int j = 0;j<message.length();j++){
+                if(ctr[message.charAt(j)] > max){
+                    max = ctr[message.charAt(j)];
+                    result = message.charAt(j);
+                }
+            }
+        }
+        return result;
+    }
+    static void noRepeatingValueInString(String text){
+        for (int i = 0;i<text.length();i++){
+            boolean unique = true;
+            for (int j = i + 1;j<text.length();j++){
+                if (text.charAt(i) == text.charAt(j) && i != j){
+                    System.out.println("not Uniqe : "+text.charAt(i));
+                    break;
+                }
+            }
+            if (unique){
+                System.out.println("Unique : "+text.charAt(i));
+                break;
+            }
+        }
+    }
+
     static String longestString(String[] arr){
         int max = 0;
         String longest = null;
@@ -19,6 +59,7 @@ public class Exercises {
                 longest = s;
             }
         }
+        System.out.println("Max :"+max);
         return longest;
     }
 
@@ -48,6 +89,7 @@ public class Exercises {
             System.out.print(arr[i]+" ");
         }
     }
+
     static void reverseArraylist(ArrayList<Integer> arrayList){
         int start = 0;
         int end = arrayList.size()-1;

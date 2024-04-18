@@ -359,6 +359,7 @@ public class StringExercises {
         }
 
     }
+
     static void longestSubstring(String input){
         char[] arr = input.toCharArray();
         String long_str = null;
