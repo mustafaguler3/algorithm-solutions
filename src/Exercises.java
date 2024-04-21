@@ -3,8 +3,83 @@ import java.util.*;
 public class Exercises {
     public static void main(String[] args) {
 
-        isEvenOrOdd(13);
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(2);
+        numbers.add(4);
+        numbers.add(1);
+
+        // Remove duplicates
+        List<Integer> uniqueNumbers = removeDuplicates(numbers);
+
+        // Print unique elements
+        System.out.println("mustafa:");
+        for (Integer number : uniqueNumbers) {
+            System.out.println(number);
+        }
     }
+
+    // Write a Java Program to check if any number is a magic number or not. A number is said to be a magic number if after doing the sum of digits in each step and in turn doing the sum of digits of that sum, the ultimate result (when there is only one digit left) is 1.
+
+    // write a Comparator in Java to compare two employees based upon name,age and address
+    // Given an array of non-duplicating numbers from 1 to n where one number is missing, write an efficient java program to find that missing number.
+    // Write a Java program to rotate arrays 90 degree clockwise by taking matrices from user input.
+    // Write a Java program to create and throw custom exceptions.
+   // Write a java program to check if any number given as input is the sum of 2 prime numbers.
+    // Write a Java program for solving the Tower of Hanoi Problem.
+    // Implement Binary Search in Java using recursion.
+    // Write a Java Program to find the factorial of a given number.
+    // Write a Java program to check if the two strings are anagrams
+    // Write a Java Program to print Fibonacci Series using Recursion.
+    // Write a program to find the square root of a number.
+    // Write a program that detects the duplicate characters in a string.
+
+    // Write a Program to remove duplicates in an ArrayList
+    static <T> List<T> removeDuplicates(List<T> list){
+        HashSet<T> set = new HashSet<>();
+        // list to store unique elements in order
+        List<T> uniqueList = new ArrayList<>();
+
+        for (T element: list){
+            if (set.add(element)){
+                uniqueList.add(element);
+            }
+        }
+        return uniqueList;
+    }
+    // Find the word count in a string using HashMap Collection
+    static HashMap<String,Integer> getWordCount(String input){
+        HashMap<String,Integer> wordCount = new HashMap<>();
+        String[] words = input.split("\\s+");
+
+        for (String word: words){
+            word = word.toLowerCase();
+            wordCount.put(word,wordCount.getOrDefault(word,0) + 1);
+        }
+
+        for (String w: wordCount.keySet()){
+            System.out.println(w + ": "+wordCount.get(w));
+        }
+        return wordCount;
+    }
+    // Write a program to find the Second Highest number in an ArrayList
+    static int findSecondHighest(ArrayList<Integer> arrayList){
+        int max = 0;
+        int secondMax = 0;
+
+        for (int number : arrayList){
+            if (number > secondMax){
+                secondMax = max;
+                max = number;
+            }else if (number > secondMax && number != secondMax){
+                secondMax = number;
+            }
+        }
+        return secondMax;
+    }
+
 
     /*
      * This method uses bitwise AND (&) operator to check if a number is
