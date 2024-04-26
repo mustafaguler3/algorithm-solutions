@@ -251,9 +251,11 @@ public class StringExercises {
 
     public static void findDuplicates(String str) {
         // Karakterlerin sayısını saklamak için bir HashMap kullanılır
+        // A HashMap is used to store the number of characters
         Map<Character, Integer> charCountMap = new HashMap<>();
 
         // String içindeki her bir karakter için döngü
+        // Loop for each character in string
         for (char c : str.toCharArray()) {
             // Eğer karakter zaten harita içinde varsa, sayısını bir artır
             if (charCountMap.containsKey(c)) {

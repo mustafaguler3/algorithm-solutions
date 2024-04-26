@@ -1,41 +1,194 @@
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Exercises {
     public static void main(String[] args) {
 
-        List<Integer> numbers = new ArrayList<>();
-        numbers.add(1);
-        numbers.add(2);
-        numbers.add(3);
-        numbers.add(2);
-        numbers.add(4);
-        numbers.add(1);
 
-        // Remove duplicates
-        List<Integer> uniqueNumbers = removeDuplicates(numbers);
+        duplicateChar("mustafa");
+    }
 
-        // Print unique elements
-        System.out.println("mustafa:");
-        for (Integer number : uniqueNumbers) {
-            System.out.println(number);
+    static void duplicateCheckerInList(List<Integer> list){
+        if (list != null && !list.isEmpty()){
+            Set<Integer> duplicate = new HashSet<>();
+
+            for (int i = 0;i<list.size();i++){
+                for (int j = i + 1;j<list.size();j++){
+                    if (list.get(i) == list.get(j)){
+                        duplicate.add(list.get(j));
+                    }
+                }
+            }
+            System.out.println("There are "+duplicate.size()+ " duplicate item : "+duplicate);
         }
     }
 
     // Write a Java Program to check if any number is a magic number or not. A number is said to be a magic number if after doing the sum of digits in each step and in turn doing the sum of digits of that sum, the ultimate result (when there is only one digit left) is 1.
-
+    public static boolean isMagicNumber(int number) {
+        while (number > 9) { // Continue the process until there is only one digit left
+            int sum = 0;
+            while (number > 0) { // Calculate the sum of digits
+                sum += number % 10;
+                number /= 10;
+            }
+            number = sum; // Update the number with the sum
+        }
+        return number == 1; // Check if the final result is 1
+    }
     // write a Comparator in Java to compare two employees based upon name,age and address
-    // Given an array of non-duplicating numbers from 1 to n where one number is missing, write an efficient java program to find that missing number.
-    // Write a Java program to rotate arrays 90 degree clockwise by taking matrices from user input.
-    // Write a Java program to create and throw custom exceptions.
-   // Write a java program to check if any number given as input is the sum of 2 prime numbers.
-    // Write a Java program for solving the Tower of Hanoi Problem.
-    // Implement Binary Search in Java using recursion.
-    // Write a Java Program to find the factorial of a given number.
-    // Write a Java program to check if the two strings are anagrams
-    // Write a Java Program to print Fibonacci Series using Recursion.
-    // Write a program to find the square root of a number.
-    // Write a program that detects the duplicate characters in a string.
 
+    // Given an array of non-duplicating numbers from 1 to n where one number is missing, write an efficient java program to find that missing number.
+    public static int findMissingNumberTwo(int[] array) {
+        int n = array.length + 1; // Expected length of array including the missing number
+        int expectedSum = (n * (n + 1)) / 2; // Sum of numbers from 1 to n
+
+        int actualSum = 0;
+        for (int num : array) {
+            actualSum += num;
+        }
+
+        return expectedSum - actualSum;
+    }
+    // Write a Java program to rotate arrays 90 degree clockwise by taking matrices from user input.
+    public static int[][] rotateMatrix(int[][] matrix) {
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+        int[][] rotatedMatrix = new int[cols][rows];
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                rotatedMatrix[j][rows - 1 - i] = matrix[i][j];
+            }
+        }
+
+        return rotatedMatrix;
+    }
+    // Write a Java program to create and throw custom exceptions.
+    static void writeCustom(){
+        try {
+            int age = 10;
+            if (age < 18){
+                throw new CustomeException("Age must be 18 or above");
+            }
+            System.out.println("Age is: "+age);
+        } catch (CustomeException e) {
+            e.printStackTrace();
+        }
+    }
+   // Write a java program to check if any number given as input is the sum of 2 prime numbers.
+    static boolean isPrime(int num){
+        if (num <= 1){
+            return false;
+        }
+        for (int i = 2;i<=Math.sqrt(num);i++){
+            if (num % i == 0){
+                return false;
+            }
+        }
+        return true;
+    }
+    static boolean isSumOfTwoPrimes(int num){
+        for (int i = 2;i<= num/2;i++){
+            if (isPrime(i) && isPrime(num - i)){
+                return true;
+            }
+        }
+        return false;
+    }
+    // Write a Java program for solving the Tower of Hanoi Problem.
+    public static void solveTowerOfHanoi(int numDiscs, char source, char auxiliary, char destination) {
+        if (numDiscs == 1) {
+            System.out.println("Move disc 1 from " + source + " to " + destination);
+            return;
+        }
+
+        solveTowerOfHanoi(numDiscs - 1, source, destination, auxiliary);
+        System.out.println("Move disc " + numDiscs + " from " + source + " to " + destination);
+        solveTowerOfHanoi(numDiscs - 1, auxiliary, source, destination);
+    }
+    // Implement Binary Search in Java using recursion.
+    static int binarySearch(int[] arr,int target,int low,int high){
+        if (low > high){
+            return -1; // element not found
+        }
+        int mid = low + (high-low) / 2;
+        if (arr[mid] == target){
+            return mid; // element found at mid index
+        }else if (arr[mid] < target){
+            return binarySearch(arr,target,mid + 1,high); // Search in the right half
+        }else {
+            return binarySearch(arr,target,low,mid - 1); // Search in the left half
+        }
+    }
+    // Write a Java Program to find the factorial of a given number.
+    public static long calculateFactorial(int number) {
+        if (number < 0) {
+            throw new IllegalArgumentException("Factorial is not defined for negative numbers");
+        }
+
+        // Base case: factorial of 0 is 1
+        if (number == 0) {
+            return 1;
+        }
+
+        // Recursive case: factorial(n) = n * factorial(n-1)
+        return number * calculateFactorial(number - 1);
+    }
+    // Write a Java program to check if the two strings are anagrams
+    static boolean areAnagrams(String s1,String s2){
+        // remove spaces and convert strings to lowercase
+        s1 = s1.replaceAll("\\s","").toLowerCase();
+        s2 = s2.replaceAll("\\s","").toLowerCase();
+
+        // check if the lengths are equal
+        if (s1.length() != s2.length()){
+            return false;
+        }
+
+        // convert strings to char arrays and sort them
+        char[] chr1 = s1.toCharArray();
+        char[] chr2 = s2.toCharArray();
+        Arrays.sort(chr1);
+        Arrays.sort(chr2);
+
+        // compare sorted char arrays
+        return Arrays.equals(chr1,chr2);
+    }
+    // Write a Java Program to print Fibonacci Series using Recursion.
+    static int fiboRecursive(int n){
+        if (n == 0){
+            return 0;
+        }else if (n == 1){
+            return 1;
+        }else {
+            return fiboRecursive(n - 1) + fiboRecursive(n -2);
+        }
+    }
+    // Write a program to find the square root of a number.
+    static int squareRoot(int number){
+        return (int) Math.sqrt(number);
+    }
+    // Write a program that detects the duplicate characters in a string.
+    static void duplicateChar(String str){
+        Map<Character,Integer> duplicates = new HashMap<>();
+
+        for (char c : str.toCharArray()){
+            if (duplicates.containsKey(c)){
+                // If the character is already in the map, increase its number by one
+                duplicates.put(c,duplicates.get(c)+1);
+            }else {
+                // If the character is not in the map, add it to the map and set the number to 1
+                duplicates.put(c,1);
+            }
+        }
+        // Looks at each entry in the map to find repeating characters
+        for (Map.Entry<Character,Integer> entry : duplicates.entrySet()){
+            if (entry.getValue() > 1){
+                System.out.println("Character "+ entry.getKey() + " " + entry.getValue() +" times repeats itself");
+            }
+        }
+
+    }
     // Write a Program to remove duplicates in an ArrayList
     static <T> List<T> removeDuplicates(List<T> list){
         HashSet<T> set = new HashSet<>();
