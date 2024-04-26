@@ -1,8 +1,60 @@
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 public class ExercisesTwo {
     public static void main(String[] args) {
 
-        reverseNum(123);
-        System.out.println(reverseNum(678));
+        findCommondTwoStrings("mustafa","gülerm");
+    }
+    static void findCommondTwoStrings(String s1,String s2){
+        Set<Character> set1 = new HashSet<>();
+        Set<Character> set2 = new HashSet<>();
+
+        for (char c : s1.toCharArray()){
+            set1.add(c);
+        }
+
+        for (char c : s2.toCharArray()){
+            set2.add(c);
+        }
+        set1.retainAll(set2);
+
+        for (char c : set1){
+            System.out.println(c);
+        }
+    }
+    static void findDuplicateCharacter(String str){
+        Map<Character,Integer> duplicates = new HashMap<>();
+
+        for (char c : str.toCharArray()){
+            if (duplicates.containsKey(c)){
+                duplicates.put(c,duplicates.get(c)+1);
+            }else {
+                duplicates.put(c,1);
+            }
+        }
+
+        for (Map.Entry<Character,Integer> entry: duplicates.entrySet()){
+            if (entry.getValue() > 1){
+                System.out.println("Character "+entry.getKey()+ " "+ entry.getValue() + " times repeats itself");
+            }
+        }
+    }
+    static void isPalindrome(int number){
+        int reverse = 0;
+
+        while (number != 0){
+            reverse = reverse*10 + number%10;
+            number /= 10;
+        }
+
+        if (reverse == number){
+            System.out.println("is palindrome");
+        }else {
+            System.out.println("not palindrome");
+        }
     }
     static int reverseNum(int number){
         int reverse = 0;
@@ -12,7 +64,7 @@ public class ExercisesTwo {
         }
         return reverse;
     }
-    static void isArstrongNumber(int number){
+    static void isArmstrongNumber(int number){
         int sum = 0;
 
         while (number != 0){
