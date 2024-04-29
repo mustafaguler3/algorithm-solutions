@@ -6,7 +6,33 @@ import java.util.Set;
 public class ExercisesTwo {
     public static void main(String[] args) {
 
-        findCommondTwoStrings("mustafa","gülerm");
+        int[] arr = {1,2,3,5,6,7};
+
+        findMissingNumber(arr);
+        System.out.println(findMissingNumber(arr));
+    }
+
+    static int findMissingNumber(int[] arr){
+        int length = arr.length + 1;
+        int total = (length * (length + 1)) / 2;
+        int sum = 0;
+
+        for (int a : arr){
+            sum += a;
+        }
+        int missingNumber = total - sum;
+
+        return missingNumber;
+    }
+    static int findMiddle(int[] arr){
+        int length = arr.length;
+        int middle = length / 2;
+
+        if (length % 2 != 0){
+            return arr[middle];
+        }else {
+            return (arr[middle - 1] + arr[middle]) / 2;
+        }
     }
     static void findCommondTwoStrings(String s1,String s2){
         Set<Character> set1 = new HashSet<>();

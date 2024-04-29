@@ -395,7 +395,7 @@ public class Exercises {
 
     static int findMissingNumber(int[] arr){
         int n = arr.length + 1;
-        int total = n * (n + 1) / 2;
+        int total = (n * (n + 1)) / 2;
         int arraySum = 0;
 
         for (int num : arr){
@@ -423,7 +423,7 @@ public class Exercises {
             return true;
         }
 
-        if (arr[n - 1] < arr[n -2]){
+        if (arr[n - 1] < arr[n - 2]){
             return false;
         }
 
