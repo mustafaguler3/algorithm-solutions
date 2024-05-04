@@ -3,6 +3,8 @@ import java.util.*;
 public class StringExercises {
     public static void main(String[] args) {
 
+        maxOccuringChar("mustafat");
+        System.out.println(maxOccuringChar("mustafa"));
     }
 
     // Palindrome kontrolü yapan metod

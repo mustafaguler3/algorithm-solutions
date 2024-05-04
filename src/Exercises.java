@@ -346,7 +346,7 @@ public class Exercises {
 
     static void reverseArraylist(ArrayList<Integer> arrayList){
         int start = 0;
-        int end = arrayList.size()-1;
+        int end = arrayList.size() - 1;
 
         while (start < end){
             int temp = arrayList.get(start);

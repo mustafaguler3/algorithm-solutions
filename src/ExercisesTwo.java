@@ -1,17 +1,88 @@
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class ExercisesTwo {
     public static void main(String[] args) {
 
         int[] arr = {1,2,3,5,6,7};
 
-        findMissingNumber(arr);
-        System.out.println(findMissingNumber(arr));
-    }
 
+    }
+    static int findSecondHighest(ArrayList<Integer> arrayList){
+        int max = 0;
+        int second = 0;
+
+        for (int number : arrayList){
+            if (number > second){
+                second = max;
+                max = number;
+            }else if (number > second && number != second){
+                second = number;
+            }
+        }
+        return second;
+    }
+    static void bracketChecker(String str){
+        if (str != null && !str.isEmpty()){
+            while (str.contains("()") || str.contains("[]") || str.contains("{}")){
+                str = str.replace("()","");
+                str = str.replace("[]","");
+                str = str.replace("{}","");
+            }
+            if (str.isEmpty()){
+                System.out.println("Correct");
+            }else {
+                System.out.println("Not Correct");
+            }
+        }
+    }
+    static boolean hasAllUniqueChars(String word){
+        HashSet al = new HashSet();
+
+        for (int index = 0;index<word.length(); index++){
+            char c = word.charAt(index);
+            // if hashset's add method return false, that means it is already present in HashSet
+            if (!al.add(c)){
+                return false;
+            }
+        }
+        return true;
+    }
+    static int fibonacci(int num){
+        if (num <= 1){
+            return num;
+        }
+        int fib = 1;int prev = 1;
+        for (int i = 2;i<num;i++){
+            int temp = fib;
+            fib += prev;
+            prev = temp;
+        }
+        return fib;
+    }
+    static String longestString(String[] str){
+        int max = 0;
+        String longest = null;
+
+        for (String s : str){
+            if (s.length() > max){
+                max = s.length();
+                longest = s;
+            }
+        }
+        return longest;
+    }
+    static void reverseArray(int[] arr){
+        int start = 0;
+        int end = arr.length - 1;
+        while (start < end){
+            int temp = start;
+            start = end;
+            end = temp;
+
+            start++;
+            end--;
+        }
+    }
     static int findMissingNumber(int[] arr){
         int length = arr.length + 1;
         int total = (length * (length + 1)) / 2;
