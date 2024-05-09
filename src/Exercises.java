@@ -161,7 +161,7 @@ public class Exercises {
         }else if (n == 1){
             return 1;
         }else {
-            return fiboRecursive(n - 1) + fiboRecursive(n -2);
+            return fiboRecursive(n - 1) + fiboRecursive(n - 2);
         }
     }
     // Write a program to find the square root of a number.

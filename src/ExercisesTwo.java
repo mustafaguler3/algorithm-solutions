@@ -7,6 +7,17 @@ public class ExercisesTwo {
 
 
     }
+    // Write a Program to remove duplicates in an ArrayList
+    static int recursiveFibonacci(int number){
+        if (number == 0){
+            return 0;
+        }else if (number == 1){
+            return 1;
+        }else {
+            return recursiveFibonacci(number - 1) + recursiveFibonacci(number - 2);
+        }
+    }
+
     static int findSecondHighest(ArrayList<Integer> arrayList){
         int max = 0;
         int second = 0;
