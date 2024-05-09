@@ -5,7 +5,23 @@ public class ExercisesTwo {
 
         int[] arr = {1,2,3,5,6,7};
 
+        System.out.println("\\s");
 
+    }
+    static boolean areAnagram(String s1,String s2){
+        s1 = s1.replaceAll("\\s","").toLowerCase();
+        s2 = s2.replaceAll("\\s","").toLowerCase();
+
+        if (s1.length() != s2.length()){
+            return false;
+        }
+
+        char[] chr1 = s1.toCharArray();
+        char[] chr2 = s2.toCharArray();
+        Arrays.sort(chr1);
+        Arrays.sort(chr2);
+
+        return Arrays.equals(chr1,chr2);
     }
     // Write a Program to remove duplicates in an ArrayList
     static int recursiveFibonacci(int number){
