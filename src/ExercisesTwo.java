@@ -8,6 +8,19 @@ public class ExercisesTwo {
         System.out.println("\\s");
 
     }
+    static int missingNumber(int[] arr){
+        int n = arr.length + 1;
+        int expectedSum = (n * (n + 1)) / 2;
+        int sum = 0;
+
+        for (int num : arr){
+            sum += num;
+        }
+        int missingNumber = expectedSum - sum;
+
+        return missingNumber;
+    }
+
     static boolean areAnagram(String s1,String s2){
         s1 = s1.replaceAll("\\s","").toLowerCase();
         s2 = s2.replaceAll("\\s","").toLowerCase();
